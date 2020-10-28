@@ -6,7 +6,7 @@
 #include <SDL2/SDL.h>
 
 
-// Get a random number between 0 and 255
+// Get a random number between 0 and 255.
 int randCol()
 {
     return rand() % 255 + 0;
