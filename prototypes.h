@@ -19,10 +19,10 @@ extern SDL_Texture *getBackground(void);
 extern SDL_Texture *getHeroTexture(void);
 extern SDL_Texture *getTiles(void);
 extern SDL_Texture *getSpriteTexture(void);
-extern void initSpriteTexture();
-extern void spriteTextureClean();
-extern void initHeroTexture();
-extern void heroTextureClean();
+extern void initSpriteTexture(void);
+extern void spriteTextureClean(void);
+extern void initHeroTexture(void);
+extern void heroTextureClean(void);
 extern SDL_Renderer *getrenderer(void);
 extern void init(char *);
 extern void initMaps(void);
@@ -30,10 +30,10 @@ extern void loadGame(void);
 extern SDL_Texture *loadImage(char *name);
 extern void gestionInputs(Input *);
 extern void getInput(Input *);
-extern int initHerox();
-extern int initHeroy();
-extern int initSpritex();
-extern int initSpritey();
+extern int initHerox(void);
+extern int initHeroy(void);
+extern int initSpritex(void);
+extern int initSpritey(void);
 
 
 
