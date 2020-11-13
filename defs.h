@@ -17,8 +17,8 @@
 #define INCREMENT 27
 #define MONSTRE 1
 #define HERO 2
-#define HERO_STARTX 0
-#define HERO_STARTY 236
+#define HERO_STARTX 5
+#define HERO_STARTY 247
 #define SPRITE_STARTX 236
 #define SPRITE_STARTY 236
 

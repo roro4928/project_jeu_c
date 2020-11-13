@@ -6,7 +6,7 @@ SDL_Texture *heroTexture;
 
 void initHeroTexture()
 {
-    heroTexture = loadImage("graphics/hero64.jpg");
+    heroTexture = loadImage("graphics/meatboy.png");
 }
 
 
