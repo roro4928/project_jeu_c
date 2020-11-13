@@ -6,6 +6,37 @@ void drawGame(void)
 
 // Affiche le fond (background) aux coordonnées (0,0)
 drawImage(getBackground(), 0, 0);
+drawImage(getSpriteTexture(), initSpritex(),initSpritey());
+drawImage(getHeroTexture(), initHerox(), initHeroy());
+
+
+
+
+
+for(int x=0;x<(INCREMENT/2);x++)
+{
+    drawImage(getTiles(),x*TILES_WIDTH,300);
+}
+
+for(int x=(INCREMENT/2);x<INCREMENT;x++)
+{
+    drawImage(getTiles(),x*TILES_WIDTH,236);
+}
+
+
+
+/*drawImage(getTiles(),240,300);
+drawImage(getTiles(),272,300);
+drawImage(getTiles(),272+32,300);
+drawImage(getTiles(),272+64,300);
+drawImage(getTiles(),272+96,300);
+drawImage(getTiles(),272+128,300);
+drawImage(getTiles(),272+160,300);
+drawImage(getTiles(),272+192,300);
+
+*/
+
+
 
 // Affiche l'écran
 SDL_RenderPresent(getrenderer());

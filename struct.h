@@ -8,8 +8,31 @@ typedef struct
 {
 
 SDL_Texture *background;
+SDL_Texture *tiles;
 
 } Map;
+
+typedef struct
+{
+    int x;
+    int y;
+    int longeur;
+    int largeur;
+    int type;
+}Sprites;
+
+
+
+typedef struct Input
+{
+
+	int escape;
+
+} Input;
+
+
+
+
 
 
 

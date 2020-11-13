@@ -81,12 +81,17 @@ void loadGame(void)
 {
 //On charge les données pour la map
 initMaps();
+initHeroTexture();
+initSpriteTexture();
+
 }
 
 void cleanup()
 {
     //Nettoie les sprites de la map
     cleanMaps();
+    spriteTextureClean();
+    heroTextureClean();
     //On quitte SDL_Mixer 2 et on décharge la mémoire
     Mix_CloseAudio();
     Mix_Quit();
