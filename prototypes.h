@@ -30,10 +30,10 @@ extern void loadGame(void);
 extern SDL_Texture *loadImage(char *name);
 extern void gestionInputs(Input *);
 extern void getInput(Input *);
-extern void initHerox(int valeur);
-extern void initHeroy(int valeur);
-extern void initSpritex(int valeur);
-extern void initSpritey(int valeur);
+extern int initHerox();
+extern int initHeroy();
+extern int initSpritex();
+extern int initSpritey();
 
 
 
