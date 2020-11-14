@@ -6,7 +6,7 @@ Map map;
 void initMaps(void)
 {
 // Charge l'image du fond (background)
-map.background = loadImage("graphics/mountain.jpg");
+map.background = loadImage("graphics/background.png");
 map.tiles = loadImage("graphics/plateforme.png");
 
 }

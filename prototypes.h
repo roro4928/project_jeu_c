@@ -34,7 +34,11 @@ extern int initHerox(void);
 extern int initHeroy(void);
 extern int initSpritex(void);
 extern int initSpritey(void);
-
+extern player *getPlayer(void);
+extern int getPlayerx(void);
+extern int getPlayery(void);
+extern void initializePlayer(void);
+extern void updatePlayer(Input *);
 
 
 #endif

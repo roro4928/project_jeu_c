@@ -15,6 +15,8 @@ int main(int argc, char *argv[])
     // Chargement des ressources (graphismes, sons)
     loadGame();
 
+    initializePlayer();
+
     // Appelle la fonction cleanup à la fin du programme
     atexit(cleanup);
 
@@ -25,6 +27,9 @@ int main(int argc, char *argv[])
     {
 
         gestionInputs(&input);
+
+        updatePlayer(&input);
+
         //On dessine tout
         drawGame();
 

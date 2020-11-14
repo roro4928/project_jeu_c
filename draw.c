@@ -7,10 +7,7 @@ void drawGame(void)
 // Affiche le fond (background) aux coordonnées (0,0)
 drawImage(getBackground(), 0, 0);
 drawImage(getSpriteTexture(), initSpritex(),initSpritey());
-drawImage(getHeroTexture(), initHerox(), initHeroy());
-
-
-
+drawImage(getHeroTexture(), getPlayerx(), getPlayery());
 
 
 for(int x=0;x<(INCREMENT/2);x++)

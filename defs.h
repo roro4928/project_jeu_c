@@ -21,7 +21,11 @@
 #define HERO_STARTY 247
 #define SPRITE_STARTX 236
 #define SPRITE_STARTY 236
-
+#define HERO_WIDTH 64
+#define HERO_HEIGHT 53
+#define HERO_SPEED 4
+#define RIGHT 1
+#define LEFT 2
 
 
 

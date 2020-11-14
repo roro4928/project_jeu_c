@@ -21,12 +21,20 @@ typedef struct
     int type;
 }Sprites;
 
+typedef struct
+{
+    int x;
+    int y;
+    int h;
+    int w;
+}player;
+
 
 
 typedef struct Input
 {
 
-	int escape;
+	int escape, right, left, jump;
 
 } Input;
 
