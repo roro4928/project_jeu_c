@@ -28,6 +28,7 @@ typedef struct
     int h;
     int w;
     int isFalling;
+    int jump;
 }player;
 
 
