@@ -27,6 +27,7 @@ typedef struct
     int y;
     int h;
     int w;
+    int isFalling;
 }player;
 
 
