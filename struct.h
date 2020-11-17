@@ -27,7 +27,6 @@ typedef struct
     int y;
     int h;
     int w;
-    int isFalling;
     int jump;
 }player;
 
@@ -39,11 +38,6 @@ typedef struct Input
 	int escape, right, left, jump;
 
 } Input;
-
-
-
-
-
 
 
 #endif // STRUCT_H_INCLUDED

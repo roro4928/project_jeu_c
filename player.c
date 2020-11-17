@@ -39,7 +39,6 @@ void initializePlayer(void)
     hero.w = HERO_WIDTH;
     hero.h = HERO_HEIGHT;
 
-    hero.isFalling = 0;
     hero.jump = hero.y - 100;
 
 }
@@ -59,7 +58,16 @@ void updatePlayer(Input *input)
     if (input->jump == 1)
     {
         if (hero.y != hero.jump)
+        {
             hero.y -= 5;
+        }
+        else
+        {
+            hero.jump = hero.y - 100;
+            input->jump = 0;
+
+        }
+
     }
 
 }
