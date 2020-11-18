@@ -9,6 +9,7 @@ typedef struct
 
 SDL_Texture *background;
 SDL_Texture *tiles;
+int startX;
 
 } Map;
 

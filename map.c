@@ -8,6 +8,7 @@ void initMaps(void)
     // Charge l'image du fond (background)
     map.background = loadImage("graphics/background.png");
     map.tiles = loadImage("graphics/plateforme.png");
+    map.startX = 0;
 
 }
 
@@ -24,7 +25,15 @@ SDL_Texture *getTiles(void)
 
 
 
+int getStartX(void)
+{
+return map.startX;
+}
 
+void setStartX(int valeur)
+{
+map.startX = valeur;
+}
 
 
 void cleanMaps(void)

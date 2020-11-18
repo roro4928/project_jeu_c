@@ -26,9 +26,9 @@
 #define HERO_SPEED 4
 #define RIGHT 1
 #define LEFT 2
-#define JUMPHEIGHT 10
+#define JUMPHEIGHT 100
 #define FALL 0
-
-
+#define LIMITE_X 400
+#define LIMITE_W 100
 
 #endif // DEFS_H_INCLUDED

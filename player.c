@@ -39,8 +39,45 @@ void initializePlayer(void)
     hero.w = HERO_WIDTH;
     hero.h = HERO_HEIGHT;
 
-    hero.jump = hero.y - 100;
+    setStartX(getStartX());
 
+    hero.jump = hero.y - JUMPHEIGHT;
+
+}
+
+void scroll(void)
+{
+   int cxperso = hero.x + hero.w / 2;
+   int xlimmin = getStartX() + LIMITE_X;
+   int xlimmax = xlimmin + LIMITE_W;
+
+   if (cxperso < xlimmin)
+    {
+    setStartX(getStartX() - 3);
+    }
+
+
+    //Si on dépasse par la droite, on avance la caméra de 3 pixels (vous
+    //pouvez modifier cette valeur)
+    if (cxperso > xlimmax)
+    {
+        setStartX(getStartX() + 3);
+    }
+
+
+    //Si on arrive au bout de la map à gauche, on stoppe le scrolling
+    if (getStartX() < 0)
+    {
+        setStartX(0);
+    }
+
+
+    //Si on arrive au bout de la map à droite, on stoppe le scrolling à la
+    //valeur Max de la map - la moitié d'un écran (pour ne pas afficher du noir).
+//    else if (getStartX() + SCREEN_WIDTH >= getMaxX())
+//    {
+//        setStartX(getMaxX() - SCREEN_WIDTH);
+//    }
 }
 
 void updatePlayer(Input *input)
@@ -63,14 +100,16 @@ void updatePlayer(Input *input)
         }
         else
         {
-            hero.jump = hero.y - 100;
+            hero.jump = hero.y - JUMPHEIGHT;
             input->jump = 0;
-
         }
 
     }
+    scroll();
 
 }
+
+
 
 void heroTextureClean()
 {

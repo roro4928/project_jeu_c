@@ -39,7 +39,8 @@ extern int getPlayerx(void);
 extern int getPlayery(void);
 extern void initializePlayer(void);
 extern void updatePlayer(Input *);
-
+extern int getStartX(void);
+extern void setStartX(int);
 
 #endif
 #endif // PROTOTYPES_H_INCLUDED
