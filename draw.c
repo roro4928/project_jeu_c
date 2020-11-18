@@ -4,27 +4,27 @@
 void drawGame(void)
 {
 
-// Affiche le fond (background) aux coordonnées (0,0)
-drawImage(getBackground(), 0, 0);
-drawImage(getSpriteTexture(), SPRITE_STARTX,SPRITE_STARTY);
-drawImage(getHeroTexture(), getHerox(), getHeroy());
-drawHero();
+    // Affiche le fond (background) aux coordonnées (0,0)
+    //drawImage(getBackground(), 0, 0);
+    drawImage(getSpriteTexture(), SPRITE_STARTX,SPRITE_STARTY);
+    drawImage(getHeroTexture(), getHerox(), getHeroy());
+    drawHero();
 
 
-// Affiche l'écran
-SDL_RenderPresent(getrenderer());
+    // Affiche l'écran
+    SDL_RenderPresent(getrenderer());
 
-// Délai pour laisser respirer le proc
-SDL_Delay(1);
+    // Délai pour laisser respirer le proc
+    SDL_Delay(1);
 
 }
 
 void initPlateforme(void)
 {
-  Tiles *ptrTabTiles = initTiles();
+  Tiles **ptrTabTiles = initTiles();
   for (int i=0; i<NBRE_TILES;i++)
   {
-      drawImage(getTiles(),getTileX(ptrTabTiles[i]),getTileY(ptrTabTiles[i]));
+      drawImage(getTiles(),getTileX(ptrTabTiles, i),getTileY(ptrTabTiles, i));
   }
 
 }

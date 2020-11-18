@@ -44,9 +44,9 @@ extern int getStartX(void);
 extern int getStartY(void);
 extern void setStartX(int valeur);
 extern void setStartY(int valeur);
-extern Tiles *initTiles(void);
-extern int getTileX(Tiles *tiles);
-extern int getTileY(Tiles *tiles);
+extern Tiles** initTiles(void);
+extern int getTileX(Tiles **tiles, int);
+extern int getTileY(Tiles **tiles, int);
 extern  void initPlateforme(void);
 
 

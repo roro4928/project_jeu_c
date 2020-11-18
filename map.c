@@ -16,20 +16,26 @@ map.startY=0;
 
 }
 
-Tiles *initTiles(void)
+Tiles **initTiles(void)
 {
-    Tiles tiles[NBRE_TILES];
-    Tiles *ptrTiles = &tiles;
-
-    for (int i=0;i<NBRE_TILES;i++)
+    Tiles **tiles = (Tiles**) malloc(sizeof(Tiles*)*NBRE_TILES);
+    if (tiles)
     {
-        tiles[i].interaction=BLOQUE;
-        tiles[i].largeur=TILES_WIDTH;
-        tiles[i].hauteur= TILES_HEIGHT;
-        tiles[i].x=i*TILES_WIDTH;
-        tiles[i].y=250;
+
+        for (int i=0;i<NBRE_TILES;i++)
+        {
+            tiles[i] = (Tiles*) malloc(sizeof(Tiles));
+            if (tiles[i])
+            {
+                tiles[i]->interaction=BLOQUE;
+                tiles[i]->largeur=TILES_WIDTH;
+                tiles[i]->hauteur= TILES_HEIGHT;
+                tiles[i]->x=i*TILES_WIDTH;
+                tiles[i]->y=250;
+            }
+        }
     }
-    return &tiles;
+    return tiles;
 }
 
 
@@ -43,13 +49,14 @@ SDL_Texture *getTiles(void)
 return map.tile;
 }
 
-int getTileX(Tiles *tiles)
+int getTileX(Tiles **tiles, int indice)
 {
-    return tiles->x ;
+    return tiles[indice]->x;
 }
-int getTileY(Tiles *tiles)
+
+int getTileY(Tiles **tiles, int indice)
 {
-    return tiles->y ;
+    return tiles[indice]->y;
 }
 
 
