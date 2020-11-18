@@ -5,7 +5,6 @@ void drawGame(void)
 {
 
     // Affiche le fond (background) aux coordonnées (0,0)
-    //drawImage(getBackground(), 0, 0);
     drawImage(getSpriteTexture(), SPRITE_STARTX,SPRITE_STARTY);
     drawImage(getHeroTexture(), getHerox(), getHeroy());
     drawHero();
@@ -16,6 +15,12 @@ void drawGame(void)
 
     // Délai pour laisser respirer le proc
     SDL_Delay(1);
+
+}
+
+void initBackground(void)
+{
+        drawImage(getBackground(), 0, 0);
 
 }
 

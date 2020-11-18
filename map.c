@@ -30,8 +30,17 @@ Tiles **initTiles(void)
                 tiles[i]->interaction=BLOQUE;
                 tiles[i]->largeur=TILES_WIDTH;
                 tiles[i]->hauteur= TILES_HEIGHT;
-                tiles[i]->x=i*TILES_WIDTH;
-                tiles[i]->y=250;
+                if (i<NBRE_TILES/2){
+
+                        tiles[i]->x=128+i*TILES_WIDTH;
+                        tiles[i]->y=420-i*TILES_HEIGHT;
+
+                }
+                else{
+                     tiles[i]->x=128+i*TILES_WIDTH;
+                    tiles[i]->y=tiles[NBRE_TILES/2-1]->y;
+                }
+
             }
         }
     }

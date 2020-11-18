@@ -48,6 +48,7 @@ extern Tiles** initTiles(void);
 extern int getTileX(Tiles **tiles, int);
 extern int getTileY(Tiles **tiles, int);
 extern  void initPlateforme(void);
+extern void initBackground(void);
 
 
 

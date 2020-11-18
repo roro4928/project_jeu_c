@@ -14,7 +14,8 @@ int main(int argc, char *argv[])
     init("Jeu des BOSS");
     // Chargement des ressources (graphismes, sons)
     loadGame();
-    initPlateforme();
+    initBackground();
+    initPlateforme();// on initialise les plateforme sur la map
     initializeHero();//on initialise le hero
 
     // Appelle la fonction cleanup à la fin du programme
