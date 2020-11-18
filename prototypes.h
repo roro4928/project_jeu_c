@@ -30,15 +30,26 @@ extern void loadGame(void);
 extern SDL_Texture *loadImage(char *name);
 extern void gestionInputs(Input *);
 extern void getInput(Input *);
-extern int initHerox(void);
-extern int initHeroy(void);
+extern void setHerox(int valeur);
+extern void setHeroy(int valeur);
+extern int getHerox(void);
+extern int getHeroy(void);
+extern void initializeHero(void);
+extern void drawHero(void);
 extern int initSpritex(void);
 extern int initSpritey(void);
-extern player *getPlayer(void);
-extern int getPlayerx(void);
-extern int getPlayery(void);
-extern void initializePlayer(void);
-extern void updatePlayer(Input *);
+extern int getBeginX(void);
+extern int getBeginY(void);
+extern int getStartX(void);
+extern int getStartY(void);
+extern void setStartX(int valeur);
+extern void setStartY(int valeur);
+extern Tiles *initTiles(void);
+extern int getTileX(Tiles *tiles);
+extern int getTileY(Tiles *tiles);
+extern  void initPlateforme(void);
+
+
 
 
 #endif

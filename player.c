@@ -1,22 +1,7 @@
 #include "prototypes.h"
 
-player hero;
+Sprites hero;
 SDL_Texture *heroTexture;
-
-player *getPlayer(void)
-{
-    return &hero;
-}
-
-int getPlayerx(void)
-{
-    return hero.x;
-}
-
-int getPlayery(void)
-{
-    return hero.y;
-}
 
 
 void initHeroTexture()
@@ -30,45 +15,67 @@ SDL_Texture *getHeroTexture(void)
     return heroTexture;
 }
 
-
-void initializePlayer(void)
+//Renvoie la coordonnée x du héro
+int getHerox(void)
 {
-    hero.x = HERO_STARTX;
-    hero.y = HERO_STARTY;
+return hero.x;
+}
+//Renvoie la coordonnée y du héro
+int getHeroy(void)
+{
+return hero.y;
+}
+//Change la coordonnéee x du héro
+void setHerox(int valeur)
+{
+hero.x = valeur;
+}
 
-    hero.w = HERO_WIDTH;
-    hero.h = HERO_HEIGHT;
+//Change la coordonnéee y du héro
+void setHeroy(int valeur)
+{
+hero.y = valeur;
+}
 
-    hero.jump = hero.y - 100;
+
+void initializeHero(void)
+{
+
+//PV à 3
+hero.life = 3;
+
+//Timer d'invincibilité à 0
+hero.invincibleTimer = 0;
+
+//Indique l'état et la direction de notre héros
+hero.etat = IDLE;
+
+hero.x = getBeginX();
+hero.y = getBeginY();
+
+/* Hauteur et largeur de notre héros */
+hero.largeur = HERO_WIDTH;
+hero.hauteur = HERO_HEIGHT;
+
+//Variables nécessaires au fonctionnement de la gestion des collisions
+hero.timerMort = 0;
+hero.onGround = 0;
 
 }
 
-void updatePlayer(Input *input)
+void drawHero(void)
 {
-    if (input->left == 1)
-    {
-        hero.x -= HERO_SPEED;
-    }
 
-    if (input->right == 1)
-    {
-        hero.x += HERO_SPEED;
-    }
 
-    if (input->jump == 1)
-    {
-        if (hero.y != hero.jump)
-        {
-            hero.y -= 5;
-        }
-        else
-        {
-            hero.jump = hero.y - 100;
-            input->jump = 0;
+/* Rectangle de destination à dessiner */
+SDL_Rect dest;
 
-        }
-
-    }
+// On soustrait des coordonnées de notre héros, ceux du début de la map, pour qu'il colle
+//au scrolling :
+dest.x = hero.x - getStartX();
+dest.y = hero.y - getStartY();
+dest.w = hero.largeur;
+dest.h = hero.hauteur;
 
 }
 
