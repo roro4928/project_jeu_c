@@ -21,10 +21,10 @@ SDL_Delay(1);
 
 void initPlateforme(void)
 {
-  Tiles *tabTiles =initTiles();
+  Tiles *ptrTabTiles = initTiles();
   for (int i=0; i<NBRE_TILES;i++)
   {
-      drawImage(getTiles(),getTileX(&tabTiles[i]),getTileY(&tabTiles[i]));
+      drawImage(getTiles(),getTileX(ptrTabTiles[i]),getTileY(ptrTabTiles[i]));
   }
 
 }

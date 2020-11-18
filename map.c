@@ -18,17 +18,18 @@ map.startY=0;
 
 Tiles *initTiles(void)
 {
-    Tiles *tiles[NBRE_TILES];
+    Tiles tiles[NBRE_TILES];
+    Tiles *ptrTiles = &tiles;
 
     for (int i=0;i<NBRE_TILES;i++)
     {
-        tiles[i]->interaction=BLOQUE;
-        tiles[i]->largeur=TILES_WIDTH;
-        tiles[i]->hauteur= TILES_HEIGHT;
-        tiles[i]->x=i*TILES_WIDTH;
-        tiles[i]->y=250;
+        tiles[i].interaction=BLOQUE;
+        tiles[i].largeur=TILES_WIDTH;
+        tiles[i].hauteur= TILES_HEIGHT;
+        tiles[i].x=i*TILES_WIDTH;
+        tiles[i].y=250;
     }
-    return tiles;
+    return &tiles;
 }
 
 
