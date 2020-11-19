@@ -5,22 +5,29 @@ void drawGame(void)
 {
 
     // Affiche le fond (background) aux coordonnées (0,0)
-    drawImage(getSpriteTexture(), SPRITE_STARTX,SPRITE_STARTY);
-    drawImage(getHeroTexture(), getHerox(), getHeroy());
+    //drawImage(getSpriteTexture(), SPRITE_STARTX,SPRITE_STARTY);
+    drawBackground();
+    initPlateforme();
     drawHero();
-
 
     // Affiche l'écran
     SDL_RenderPresent(getrenderer());
+
 
     // Délai pour laisser respirer le proc
     SDL_Delay(1);
 
 }
 
-void initBackground(void)
+void drawBackground(void)
 {
         drawImage(getBackground(), 0, 0);
+
+}
+
+void drawHero(void)
+{
+        drawImage(getHeroTexture(), getHerox(), getHeroy());
 
 }
 
@@ -59,6 +66,7 @@ return texture;
 
 }
 
+
 void drawImage(SDL_Texture *image, int x, int y)
 {
 
@@ -73,6 +81,9 @@ SDL_QueryTexture(image, NULL, NULL, &dest.w, &dest.h);
 SDL_RenderCopy(getrenderer(), image, NULL, &dest);
 
 }
+
+
+
 
 void delay(unsigned int frameLimit)
 {

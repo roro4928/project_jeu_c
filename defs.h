@@ -32,6 +32,14 @@
 #define NBRE_TILES 13
 #define BLOQUE 1
 #define TUE 0
+#define LIMITE_X 400
+#define LIMITE_W 100
+#define HERO_SPEED 4
+#define INCREMENT 27
+#define RIGHT 1
+#define LEFT 2
+#define JUMPHEIGHT 100
+
 
 
 

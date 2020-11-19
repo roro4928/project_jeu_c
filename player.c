@@ -3,6 +3,10 @@
 Sprites hero;
 SDL_Texture *heroTexture;
 
+Sprites *getHero(void)
+{
+    return &hero;
+}
 
 void initHeroTexture()
 {
@@ -60,24 +64,40 @@ hero.hauteur = HERO_HEIGHT;
 //Variables nécessaires au fonctionnement de la gestion des collisions
 hero.timerMort = 0;
 hero.onGround = 0;
+hero.jump = hero.y - JUMPHEIGHT;
+
 
 }
 
-void drawHero(void)
+void updatePlayer(Input *input)
 {
+    if (input->left == 1)
+    {
+        hero.x -= HERO_SPEED;
+    }
 
+    if (input->right == 1)
+    {
+        hero.x += HERO_SPEED;
+    }
 
-/* Rectangle de destination à dessiner */
-SDL_Rect dest;
+    if (input->jump == 1)
+    {
+        if (hero.y != hero.jump)
+        {
+            hero.y -= 5;
+        }
+        else
+        {
+            hero.jump = hero.y - JUMPHEIGHT;
+            input->jump = 0;
+        }
 
-// On soustrait des coordonnées de notre héros, ceux du début de la map, pour qu'il colle
-//au scrolling :
-dest.x = hero.x - getStartX();
-dest.y = hero.y - getStartY();
-dest.w = hero.largeur;
-dest.h = hero.hauteur;
+    }
 
 }
+
+
 
 void heroTextureClean()
 {

@@ -14,8 +14,7 @@ int main(int argc, char *argv[])
     init("Jeu des BOSS");
     // Chargement des ressources (graphismes, sons)
     loadGame();
-    initBackground();
-    initPlateforme();// on initialise les plateforme sur la map
+    // on initialise les plateforme sur la map
     initializeHero();//on initialise le hero
 
     // Appelle la fonction cleanup à la fin du programme
@@ -27,14 +26,20 @@ int main(int argc, char *argv[])
     while (go == 1)
     {
 
-        gestionInputs(&input);
+
         //On dessine tout
+
         drawGame();
+        gestionInputs(&input);
+        updatePlayer(&input);
+
+
 
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
         delay(frameLimit);
         frameLimit = SDL_GetTicks() + 16;
-    }
+
+        }
 
     // On quitte
     exit(0);

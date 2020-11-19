@@ -44,7 +44,7 @@ typedef struct
 typedef struct Input
 {
 
-	int escape;
+	int escape, right, left, jump;
 
 } Input;
 

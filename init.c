@@ -5,6 +5,7 @@ SDL_Window *screen;
 SDL_Renderer *renderer;
 
 
+
 SDL_Renderer *getrenderer(void)
 {
     return renderer;
