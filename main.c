@@ -7,15 +7,18 @@ Input input;
 
 int main(int argc, char *argv[])
 {
+    SDL_Texture *heroTexture;
+    Sprites *hero = getHero();
     unsigned int frameLimit = SDL_GetTicks() + 16;
     int go;
 
     // Initialisation de la SDL
     init("Jeu des BOSS");
     // Chargement des ressources (graphismes, sons)
-    loadGame();
+    loadGame(heroTexture);
+
     // on initialise les plateforme sur la map
-    initializeHero();//on initialise le hero
+    initializeHero(hero);//on initialise le hero
 
     // Appelle la fonction cleanup à la fin du programme
     atexit(cleanup);
@@ -29,9 +32,9 @@ int main(int argc, char *argv[])
 
         //On dessine tout
 
-        drawGame();
+        drawGame(heroTexture,hero);
         gestionInputs(&input);
-        updatePlayer(&input);
+        updatePlayer(&input, hero);
 
 
 

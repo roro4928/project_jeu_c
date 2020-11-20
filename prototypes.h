@@ -10,9 +10,9 @@
 /* Catalogue des prototypes des fonctions utilisées.
    On le complétera au fur et à mesure. */
 extern void cleanMaps(void);
-extern void cleanup(void);
-extern void delay(unsigned int frameLimit);
-extern void drawGame(void);
+extern void cleanup(SDL_Texture*);
+extern void delay(unsigned int);
+extern void drawGame(SDL_Texture*, Sprites*);
 extern void drawImage(SDL_Texture *, int, int);
 extern void drawMap(int);
 extern SDL_Texture *getBackground(void);
@@ -21,21 +21,22 @@ extern SDL_Texture *getTiles(void);
 extern SDL_Texture *getSpriteTexture(void);
 extern void initSpriteTexture(void);
 extern void spriteTextureClean(void);
-extern void initHeroTexture(void);
-extern void heroTextureClean(void);
+extern void initHeroTexture(SDL_Texture*);
+extern void heroTextureClean(SDL_Texture*);
 extern SDL_Renderer *getrenderer(void);
 extern void init(char *);
 extern void initMaps(void);
-extern void loadGame(void);
+extern void loadGame(SDL_Texture*);
 extern SDL_Texture *loadImage(char *name);
 extern void gestionInputs(Input *);
 extern void getInput(Input *);
-extern void setHerox(int valeur);
-extern void setHeroy(int valeur);
-extern int getHerox(void);
-extern int getHeroy(void);
-extern void initializeHero(void);
-extern void drawHero(void);
+extern Sprites* getHero(void);
+extern void setHerox(int valeur,Sprites*);
+extern void setHeroy(int valeur, Sprites*);
+extern int getHerox(Sprites*);
+extern int getHeroy(Sprites*);
+extern void initializeHero(Sprites*);
+extern void drawHero(SDL_Texture*, Sprites*);
 extern int initSpritex(void);
 extern int initSpritey(void);
 extern int getBeginX(void);
@@ -49,8 +50,8 @@ extern int getTileX(Tiles **tiles, int);
 extern int getTileY(Tiles **tiles, int);
 extern  void initPlateforme(void);
 extern void drawBackground(void);
-extern void updatePlayer(Input *);
-extern void gravity(void);
+extern void updatePlayer(Input *, Sprites*);
+extern void gravity(Sprites*);
 
 
 

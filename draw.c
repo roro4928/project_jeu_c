@@ -1,15 +1,14 @@
 #include "prototypes.h"
 
 
-void drawGame(void)
+void drawGame(SDL_Texture *heroTexture, Sprites *hero)
 {
 
     // Affiche le fond (background) aux coordonnées (0,0)
     //drawImage(getSpriteTexture(), SPRITE_STARTX,SPRITE_STARTY);
     drawBackground();
     initPlateforme();
-    drawHero();
-
+    drawHero(heroTexture, hero);
     // Affiche l'écran
     SDL_RenderPresent(getrenderer());
 
@@ -25,9 +24,9 @@ void drawBackground(void)
 
 }
 
-void drawHero(void)
+void drawHero(SDL_Texture *heroTexture, Sprites *hero)
 {
-        drawImage(getHeroTexture(), getHerox(), getHeroy());
+        drawImage(heroTexture, getHerox(hero), getHeroy(hero));
 
 }
 
