@@ -83,15 +83,39 @@ void updatePlayer(Input *input)
 
     if (input->jump == 1)
     {
+
         if (hero.y != hero.jump)
         {
-            hero.y -= 5;
+            if(hero.y<=LIMITE_YMIN)
+            {
+
+            }
+            else{
+
+                hero.y -= 5;
+            }
+
         }
         else
         {
-            hero.jump = hero.y - JUMPHEIGHT;
+            gravity();
             input->jump = 0;
         }
+
+    }
+
+}
+
+void gravity(void)
+{
+    if(hero.y>=LIMITE_YMAX){}
+    else{
+        while(hero.y!=HERO_STARTY)
+            {
+                delay(SDL_GetTicks());
+             hero.y+=5;
+
+            }
 
     }
 

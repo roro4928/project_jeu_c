@@ -116,5 +116,14 @@ SDL_DestroyTexture(map.tile);
 map.tile = NULL;
 }
 
+if (initTiles())
+{
+    for(int i=0;i<NBRE_TILES;i++)
+    {
+        free(initTiles()[i]);
+    }
+    free(initTiles());
+}
+
 
 }

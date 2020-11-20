@@ -50,6 +50,7 @@ extern int getTileY(Tiles **tiles, int);
 extern  void initPlateforme(void);
 extern void drawBackground(void);
 extern void updatePlayer(Input *);
+extern void gravity(void);
 
 
 

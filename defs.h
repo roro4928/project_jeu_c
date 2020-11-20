@@ -32,8 +32,8 @@
 #define NBRE_TILES 13
 #define BLOQUE 1
 #define TUE 0
-#define LIMITE_X 400
-#define LIMITE_W 100
+#define LIMITE_YMIN 0
+#define LIMITE_YMAX 420
 #define HERO_SPEED 4
 #define INCREMENT 27
 #define RIGHT 1
