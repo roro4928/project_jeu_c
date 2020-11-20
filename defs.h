@@ -28,7 +28,7 @@
 #define LEFT 2
 #define JUMPHEIGHT 100
 #define FALL 0
-#define LIMITE_X 400
-#define LIMITE_W 100
+#define LEVEL_W 1280
+#define LEVEL_H 960
 
 #endif // DEFS_H_INCLUDED

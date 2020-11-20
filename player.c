@@ -47,37 +47,27 @@ void initializePlayer(void)
 
 void scroll(void)
 {
-   int cxperso = hero.x + hero.w / 2;
-   int xlimmin = getStartX() + LIMITE_X;
-   int xlimmax = xlimmin + LIMITE_W;
+    SDL_Rect camera = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
 
-   if (cxperso < xlimmin)
+    camera.x = (getPlayerx + HERO_WIDTH / 2) - SCREEN_WIDTH / 2;
+    camera.y = (getPlayery + HERO_HEIGHT / 2) - SCREEN_HEIGHT / 2;
+
+    if( camera.x < 0 )
     {
-    setStartX(getStartX() - 3);
+        camera.x = 0;
     }
-
-
-    //Si on dépasse par la droite, on avance la caméra de 3 pixels (vous
-    //pouvez modifier cette valeur)
-    if (cxperso > xlimmax)
+    if( camera.y < 0 )
     {
-        setStartX(getStartX() + 3);
+        camera.y = 0;
     }
-
-
-    //Si on arrive au bout de la map à gauche, on stoppe le scrolling
-    if (getStartX() < 0)
+    if( camera.x > LEVEL_W - camera.w )
     {
-        setStartX(0);
+        camera.x = LEVEL_W - camera.w;
     }
-
-
-    //Si on arrive au bout de la map à droite, on stoppe le scrolling à la
-    //valeur Max de la map - la moitié d'un écran (pour ne pas afficher du noir).
-//    else if (getStartX() + SCREEN_WIDTH >= getMaxX())
-//    {
-//        setStartX(getMaxX() - SCREEN_WIDTH);
-//    }
+    if( camera.y > LEVEL_H - camera.h )
+    {
+        camera.y = LEVEL_H - camera.h;
+    }
 }
 
 void updatePlayer(Input *input)
