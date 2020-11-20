@@ -60,12 +60,25 @@ return map.tile;
 
 int getTileX(Tiles **tiles, int indice)
 {
+    if(initTiles()[indice])
+    {
     return tiles[indice]->x;
+    }
+    else{
+        exit(1);
+    }
 }
 
 int getTileY(Tiles **tiles, int indice)
 {
-    return tiles[indice]->y;
+    if(initTiles()[indice])
+    {
+        return tiles[indice]->y;
+    }
+    else{
+        exit(1);
+    }
+
 }
 
 
