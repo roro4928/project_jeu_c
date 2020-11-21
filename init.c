@@ -78,12 +78,14 @@ void init(char *title)
 }
 
 
-void loadGame(SDL_Texture *heroTexture)
+SDL_Texture *loadGame(SDL_Texture *heroTexture)
 {
 //On charge les données pour la map
+
 initMaps();
-initHeroTexture(heroTexture);
+heroTexture=initHeroTexture(heroTexture);
 initSpriteTexture();
+return heroTexture;
 
 }
 

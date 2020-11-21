@@ -5,13 +5,15 @@
 
 Sprites *getHero(void)
 {
-    Sprites *hero = NULL;
+    Sprites *hero;
     return hero;
 }
 
-void initHeroTexture(SDL_Texture *heroTexture)
+SDL_Texture *initHeroTexture(SDL_Texture *heroTexture)
 {
     heroTexture = loadImage("graphics/meatboy.png");
+    return heroTexture;
+
 }
 
 
@@ -44,7 +46,7 @@ hero->y = valeur;
 }
 
 
-void initializeHero(Sprites *hero)
+Sprites *initializeHero(Sprites *hero)
 {
 
 //PV à 3
@@ -68,10 +70,10 @@ hero->timerMort = 0;
 hero->onGround = 0;
 hero->jump = hero->y - JUMPHEIGHT;
 
-
+    return hero;
 }
 
-void updatePlayer(Input *input, Sprites *hero)
+Sprites *updatePlayer(Input *input, Sprites *hero)
 {
     if ((input->left == 1) )
     {
@@ -105,7 +107,7 @@ void updatePlayer(Input *input, Sprites *hero)
         }
 
     }
-
+    return hero;
 }
 
 void gravity(Sprites *hero)
@@ -135,7 +137,7 @@ void heroTextureClean(SDL_Texture *heroTexture)
 
 }
 
-int CollisionDroite(Sprites *player, Tiles** tabBox)
+/*int CollisionDroite(Sprites *player, Tiles** tabBox)
 {
     for(int i=0;i< NBRE_TILES ;i++)
     {
@@ -149,7 +151,7 @@ int CollisionDroite(Sprites *player, Tiles** tabBox)
         }
     }
     return 0;
-}
+}*/
 
 /*int CollisionGauche(Sprites *player, Tiles** tabBox)
 {
