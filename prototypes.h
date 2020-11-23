@@ -50,8 +50,10 @@ extern int getTileX(Tiles **tiles, int);
 extern int getTileY(Tiles **tiles, int);
 extern  void initPlateforme(void);
 extern void drawBackground(void);
-extern Sprites *updatePlayer(Input *, Sprites*);
-extern void gravity(Sprites*);
+extern Sprites *updatePlayer(Input *, Sprites*, Tiles**);
+extern int CollisionDroite(Sprites *, Tiles **);
+extern int CollisionBas(Sprites *, Tiles**);
+extern int CollisionGauche(Sprites *, Tiles ** );
 
 
 

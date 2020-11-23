@@ -5,7 +5,7 @@ void drawGame(SDL_Texture *heroTexture, Sprites *hero)
 {
 
     // Affiche le fond (background) aux coordonnées (0,0)
-    //drawImage(getSpriteTexture(), SPRITE_STARTX,SPRITE_STARTY);
+    drawImage(getSpriteTexture(), SPRITE_STARTX,SPRITE_STARTY);
     drawBackground();
     initPlateforme();
     drawHero(heroTexture, hero);

@@ -49,38 +49,39 @@ hero->y = valeur;
 Sprites *initializeHero(Sprites *hero)
 {
 
-//PV à 3
-hero->life = 3;
+    //PV à 3
+    hero->life = 3;
 
-//Timer d'invincibilité à 0
-hero->invincibleTimer = 0;
+    //Timer d'invincibilité à 0
+    hero->invincibleTimer = 0;
 
-//Indique l'état et la direction de notre héros
-hero->etat = IDLE;
+    //Indique l'état et la direction de notre héros
+    hero->etat = IDLE;
 
-hero->x = getBeginX();
-hero->y = getBeginY();
+    hero->x = getBeginX();
+    hero->y = getBeginY();
 
-/* Hauteur et largeur de notre héros */
-hero->largeur = HERO_WIDTH;
-hero->hauteur = HERO_HEIGHT;
+    /* Hauteur et largeur de notre héros */
+    hero->largeur = HERO_WIDTH;
+    hero->hauteur = HERO_HEIGHT;
 
-//Variables nécessaires au fonctionnement de la gestion des collisions
-hero->timerMort = 0;
-hero->onGround = 0;
-hero->jump = hero->y - JUMPHEIGHT;
+    //Variables nécessaires au fonctionnement de la gestion des collisions
+    hero->timerMort = 0;
+    hero->onGround = 0;
+    hero->jump = hero->y - JUMPHEIGHT;
 
     return hero;
 }
 
-Sprites *updatePlayer(Input *input, Sprites *hero)
+Sprites *updatePlayer(Input *input, Sprites *hero, Tiles **tiles)
 {
-    if ((input->left == 1) )
+    static int nb = 0;
+    if (input->left == 1 && !(CollisionGauche(hero, tiles)))
     {
         hero->x -= HERO_SPEED;
     }
 
-    if (input->right == 1)
+    if ((input->right == 1) && !(CollisionDroite(hero, tiles)))
     {
         hero->x += HERO_SPEED;
     }
@@ -88,41 +89,25 @@ Sprites *updatePlayer(Input *input, Sprites *hero)
     if (input->jump == 1)
     {
 
-        if (hero->y != hero->jump)
+        if (nb!=25)
         {
-            if(hero->y<=LIMITE_YMIN)
-            {
-
-            }
-            else{
-
-                hero->y -= 5;
-            }
-
+            nb ++;
+            hero->y -=4;
         }
+
         else
         {
-            gravity(hero);
+            nb=0;
             input->jump = 0;
         }
 
     }
-    return hero;
-}
-
-void gravity(Sprites *hero)
-{
-    if(hero->y>=LIMITE_YMAX){}
-    else{
-        while(hero->y!=HERO_STARTY)
-            {
-                delay(SDL_GetTicks());
-             hero->y+=5;
-
-            }
-
+    if (!CollisionBas(hero, tiles) && (hero->y + hero->hauteur <= LIMITE_YMAX + hero->hauteur) && (input->jump != 1))
+    {
+        hero->y += 5;
     }
 
+    return hero;
 }
 
 
@@ -137,46 +122,53 @@ void heroTextureClean(SDL_Texture *heroTexture)
 
 }
 
-/*int CollisionDroite(Sprites *player, Tiles** tabBox)
+int CollisionDroite(Sprites *player, Tiles** tabBox)
 {
     for(int i=0;i< NBRE_TILES ;i++)
     {
+
         if( (player->x + player->largeur >= tabBox[i]->x)
-           &&(player->x + player->largeur <= tabBox[i]->x +(tabBox[i]->largeur)/2)
-           &&(player->y + player->hauteur <= tabBox[i]->y)
-           &&(player->y >= tabBox[i]->y + tabBox[i]->hauteur)
+           &&(player->x + player->largeur <= tabBox[i]->x +tabBox[i]->largeur/2)
+           &&(player->y + player->hauteur  - 10 > tabBox[i]->y)
+           &&(player->y < tabBox[i]->y + tabBox[i]->hauteur)
            )
         {
             return 1;
         }
     }
     return 0;
-}*/
+}
 
-/*int CollisionGauche(Sprites *player, Tiles** tabBox)
+int CollisionGauche(Sprites *player, Tiles** tabBox)
 {
     for(int i=0;i< NBRE_TILES ;i++)
     {
-        if(tabBox[i]->x + tabBox[i]->largeur <= player->x)
+        if((player->x <= tabBox[i]->x + tabBox[i]->largeur)
+           &&(player->x >= tabBox[i]->x +tabBox[i]->largeur/2)
+           &&(player->y + player->hauteur  - 10 > tabBox[i]->y)
+           &&(player->y < tabBox[i]->y + tabBox[i]->hauteur))
         {
-            return 0;
+            return 1;
         }
     }
-    return 1;
+    return 0;
 }
 
-int CollisionHaut(Sprites *player, Tiles** tabBox)
+int CollisionBas(Sprites *player, Tiles** tabBox)
 {
     for(int i=0;i< NBRE_TILES ;i++)
     {
-        if(tabBox->y + tabBox->hauteur <= player->y)
+        if( (player->x + player->largeur >= tabBox[i]->x)
+           && (player->x + player->largeur <= tabBox[i]->x +tabBox[i]->largeur)
+           && (player->y + player->largeur >= tabBox[i]->y )
+           && (player->y + player->largeur <= tabBox[i]->y + tabBox[i]->hauteur/2))
         {
-            return 0;
+            return 1;
         }
     }
-    return 1;
+    return 0;
 }
-
+/*
 int CollisionHaut(Sprites *player, Tiles** tabBox)
 {
     for(int i=0;i< NBRE_TILES ;i++)

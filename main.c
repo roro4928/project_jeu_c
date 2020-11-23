@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
     // on initialise les plateforme sur la map
     hero=initializeHero(hero);//on initialise le hero
-
+    Tiles **tiles = initTiles();
 
     // Appelle la fonction cleanup à la fin du programme
     atexit((cleanup));
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
         drawGame(heroTexture,hero);
         gestionInputs(&input);
-        hero=updatePlayer(&input, hero);
+        hero=updatePlayer(&input, hero,tiles);
 
 
 
