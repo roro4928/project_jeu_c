@@ -12,14 +12,14 @@
 
 // Taille de la fenêtre : 850x500 pixels
 #define SCREEN_WIDTH 850
-#define SCREEN_HEIGHT 500
+#define SCREEN_HEIGHT 850
 #define TILES_WIDTH 64
 #define TILES_HEIGHT 30
 #define INCREMENT 27
 #define MONSTRE 1
 #define HERO 2
 #define HERO_STARTX 400
-#define HERO_STARTY 420
+#define HERO_STARTY 20
 #define SPRITE_STARTX 236
 #define SPRITE_STARTY 236
 #define HERO_HEIGHT 64

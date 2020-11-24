@@ -86,7 +86,12 @@ Sprites *updatePlayer(Input *input, Sprites *hero, Tiles **tiles)
         hero->x += HERO_SPEED;
     }
 
-    if (input->jump == 1)
+    if(CollisionBas(hero, tiles))
+    {
+
+    }
+
+    if (input->jump == 1 && (CollisionBas(hero, tiles) || nb!=0) )
     {
 
         if (nb!=25)
@@ -102,7 +107,7 @@ Sprites *updatePlayer(Input *input, Sprites *hero, Tiles **tiles)
         }
 
     }
-    if (!CollisionBas(hero, tiles) && (hero->y + hero->hauteur <= LIMITE_YMAX + hero->hauteur) && (input->jump != 1))
+    if (!CollisionBas(hero, tiles) && (hero->y + hero->hauteur <= LIMITE_YMAX + hero->hauteur) && (nb == 0))
     {
         hero->y += 5;
     }
