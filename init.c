@@ -86,7 +86,7 @@ void init(char *title)
 */
 void son(Mix_Music *musique)
 {
-    musique = Mix_LoadMUS("Music/crazy.mp3");
+    musique = Mix_LoadMUS("Music/Hello.mp3");
     Mix_PlayMusic(musique, -1);
 }
 
