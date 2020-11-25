@@ -91,7 +91,7 @@ Sprites *updatePlayer(Input *input, Sprites *hero, Tiles **tiles)
 
     }
 
-    if (input->jump == 1 && (CollisionBas(hero, tiles) || nb!=0) )
+    if (input->jump == 1 && (CollisionBas(hero, tiles) || nb!=0 ||(hero->y + hero->hauteur >= LIMITE_YMAX + hero->hauteur)))
     {
 
         if (nb!=25)

@@ -12,7 +12,7 @@
 
 // Taille de la fenêtre : 850x500 pixels
 #define SCREEN_WIDTH 850
-#define SCREEN_HEIGHT 850
+#define SCREEN_HEIGHT 500
 #define TILES_WIDTH 64
 #define TILES_HEIGHT 30
 #define INCREMENT 27

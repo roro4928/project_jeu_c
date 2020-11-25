@@ -77,6 +77,12 @@ void init(char *title)
 
 }
 
+void son(Mix_Music *musique)
+{
+    musique = Mix_LoadMUS("graphics/ehrling.mp3");
+    Mix_PlayMusic(musique, -1);
+}
+
 
 SDL_Texture *loadGame(SDL_Texture *heroTexture)
 {
@@ -89,13 +95,14 @@ return heroTexture;
 
 }
 
-void cleanup(SDL_Texture *heroTexture)
+void cleanup(SDL_Texture *heroTexture, Mix_Music *musique)
 {
     //Nettoie les sprites de la map
     cleanMaps();
     spriteTextureClean();
     heroTextureClean(heroTexture);
     //On quitte SDL_Mixer 2 et on décharge la mémoire
+    Mix_FreeMusic(musique);
     Mix_CloseAudio();
     Mix_Quit();
 

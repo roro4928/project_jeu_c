@@ -22,6 +22,9 @@ int main(int argc, char *argv[])
     hero=initializeHero(hero);//on initialise le hero
     Tiles **tiles = initTiles();
 
+    Mix_Music *musique;
+    son(musique);
+
     // Appelle la fonction cleanup à la fin du programme
     atexit((cleanup));
 

@@ -10,7 +10,7 @@
 /* Catalogue des prototypes des fonctions utilisées.
    On le complétera au fur et à mesure. */
 extern void cleanMaps(void);
-extern void cleanup(SDL_Texture*);
+extern void cleanup(SDL_Texture*, Mix_Music*);
 extern void delay(unsigned int);
 extern void drawGame(SDL_Texture*, Sprites*);
 extern void drawImage(SDL_Texture *, int, int);
@@ -54,6 +54,7 @@ extern Sprites *updatePlayer(Input *, Sprites*, Tiles**);
 extern int CollisionDroite(Sprites *, Tiles **);
 extern int CollisionBas(Sprites *, Tiles**);
 extern int CollisionGauche(Sprites *, Tiles ** );
+extern void son(Mix_Music*);
 
 
 
