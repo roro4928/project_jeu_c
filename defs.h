@@ -28,7 +28,7 @@
 #define BLOQUE 1
 #define TUE 0
 #define LIMITE_YMIN 0
-#define LIMITE_YMAX 420
+#define LIMITE_YMAX 400
 #define HERO_SPEED 4
 #define RIGHT 1
 #define LEFT 2
