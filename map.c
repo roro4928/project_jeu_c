@@ -3,19 +3,28 @@
 
 Map map;
 
-
+/**
+* @brief: Cette fonction remplie la structure map pour l'initialiser
+*@param:
+*
+*/
 void initMaps(void)
 {
-// Charge l'image du fond (background)
-map.background = loadImage("graphics/mountain.jpg");
-map.tile = loadImage("graphics/plateforme.png");
-map.beginx=HERO_STARTX;
-map.beginy=HERO_STARTY;
-map.startX=0;
-map.startY=0;
+    // Charge l'image du fond (background)
+    map.background = loadImage("graphics/mountain.jpg");
+    map.tile = loadImage("graphics/plateforme.png");
+    map.beginx=HERO_STARTX;
+    map.beginy=HERO_STARTY;
+    map.startX=0;
+    map.startY=0;
 
 }
 
+/**
+* @brief: Cette fonction permet d'initialiser les plateformes en les stockant dans un tableau dynamique
+*@param:
+*       <output>: Tiles **tiles: tableau de pointeur
+*/
 Tiles **initTiles(void)
 {
     Tiles **tiles = (Tiles**) malloc(sizeof(Tiles*)*NBRE_TILES);
@@ -47,17 +56,32 @@ Tiles **initTiles(void)
     return tiles;
 }
 
-
+/**
+* @brief: Cette fonction récupère la texture du background
+*@param:
+*       <output>: SDL_Texture *: pointeur vers la texture du background dans la structure de la map
+*/
 SDL_Texture *getBackground(void)
 {
-return map.background;
+    return map.background;
 }
 
+/**
+* @brief: Cette fonction récupère la texture des tiles
+*@param:
+*       <output>: SDL_Texture *: pointeur vers la texture des tiles dans la structure de la map
+*/
 SDL_Texture *getTiles(void)
 {
-return map.tile;
+    return map.tile;
 }
 
+/**
+* @brief: Cette fonction récupère les coordonnées en abscisse de chaque tiles
+*@param:
+*       <intput>: Tiles **tiles: tableau de pointeur
+*       <input>: int indice: numéro du tiles dans le tableau
+*/
 int getTileX(Tiles **tiles, int indice)
 {
     if(initTiles()[indice])
@@ -69,6 +93,12 @@ int getTileX(Tiles **tiles, int indice)
     }
 }
 
+/**
+* @brief: Cette fonction récupère les coordonnées en ordonnée de chaque tiles
+*@param:
+*       <intput>: Tiles **tiles: tableau de pointeur
+*       <input>: int indice: numéro du tiles dans le tableau
+*/
 int getTileY(Tiles **tiles, int indice)
 {
     if(initTiles()[indice])
@@ -81,39 +111,71 @@ int getTileY(Tiles **tiles, int indice)
 
 }
 
-
+/**
+* @brief: Cette fonction est un guetteur qui récupère la coordonnée en abscisse du début de la map
+*@param:
+*       <output>: map.startX: coordonnée en abscisse du début de la map
+*/
 int getStartX(void)
 {
-return map.startX;
+    return map.startX;
 }
 
+/**
+* @brief: Cette fonction est un setteur qui définit la coordonnée en abscisse du début de la map
+*@param:
+*       <input>: int valeur: nouvelle coordonnée en abscisse du début de la map
+*/
 void setStartX(int valeur)
 {
-map.startX = valeur;
+    map.startX = valeur;
 }
 
+/**
+* @brief: Cette fonction est un guetteur qui récupère la coordonnée en ordonnée du début de la map
+*@param:
+*       <output>: map.startX: coordonnée en ordonnée du début de la map
+*/
 int getStartY(void)
 {
-return map.startY;
+    return map.startY;
 }
 
+/**
+* @brief: Cette fonction est un setteur qui définit la coordonnée en ordonnée du début de la map
+*@param:
+*       <input>: int valeur: nouvelle coordonnée en ordonnée du début de la map
+*/
 void setStartY(int valeur)
 {
-map.startY = valeur;
+    map.startY = valeur;
 }
 
-
+/**
+* @brief: Cette fonction est un guetteur qui récupère la coordonnée en abscisse du début du hero
+*@param:
+*       <output>: map.beginx: coordonnée en abscisse du début du hero
+*/
 int getBeginX(void)
 {
-return map.beginx;
+    return map.beginx;
 }
 
+/**
+* @brief: Cette fonction est un guetteur qui récupère la coordonnée en ordonnée du début du hero
+*@param:
+*       <output>: map.beginy: coordonnée en ordonnée du début du hero
+*/
 int getBeginY(void)
 {
 return map.beginy;
 }
 
-
+/**
+* @brief: Cette fonction libère la mémoire de la map
+*@param:
+*
+*/
 void cleanMaps(void)
 {
 // Libère la texture du background

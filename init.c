@@ -1,25 +1,28 @@
 #include "prototypes.h"
 
-
+//Variables globales pour l'affichache de l'ecran
 SDL_Window *screen;
 SDL_Renderer *renderer;
 
 
-
+/**
+* @brief: Cette fonction permet de recuperer un pointeur sur le rendu renderer de type SDL_Renderer
+*@param:
+*       <output>: SDL_Renderer *getrenderer: pointeur sur le rendu renderer de type SDL_Renderer
+*
+*/
 SDL_Renderer *getrenderer(void)
 {
     return renderer;
 }
 
-
+/**
+* @brief: On crée la fenêtre en utilisant la largeur et la hauteur définies dans les defines (defs.h).
+*@param:
+*       <intput>: char *title: titre de la fenetre
+*/
 void init(char *title)
 {
-    /* On crée la fenêtre, représentée par le pointeur jeu.window en utilisant la largeur et la
-    hauteur définies dans les defines (defs.h).
-    Nouveautés SDL2 : on peut centrer la fenêtre avec SDL_WINDOWPOS_CENTERED, et choisir la taille
-    de la fenêtre, pour que la carte graphique l'agrandisse automatiquement. Notez aussi qu'on peut
-    maintenant créer plusieurs fenêtres. */
-
     screen = SDL_CreateWindow(title,
                                   SDL_WINDOWPOS_CENTERED,
                                   SDL_WINDOWPOS_CENTERED,
@@ -29,7 +32,7 @@ void init(char *title)
     //On crée un renderer pour la SDL et on active la synchro verticale : VSYNC
     renderer = SDL_CreateRenderer(screen, -1, SDL_RENDERER_PRESENTVSYNC);
 
-    // Si on n'y arrive pas, on quitte en enregistrant l'erreur dans stdout.txt
+    // Si on n'y arrive pas, on quitte
     if (screen == NULL || renderer == NULL)
     {
         printf("Impossible d'initialiser le mode écran à %d x %d: %s\n", SCREEN_WIDTH,
@@ -77,29 +80,42 @@ void init(char *title)
 
 }
 
+/**
+* @brief: Cette fonction permet de charger une musique et de la jouer en boucle
+*
+*/
 void son(Mix_Music *musique)
 {
-    musique = Mix_LoadMUS("graphics/ehrling.mp3");
+    musique = Mix_LoadMUS("Music/crazy.mp3");
     Mix_PlayMusic(musique, -1);
 }
 
-
+/**
+* @brief:Cette fonction charge le jeu en appelant les fonctions pour charger la map, le hero
+*        et les plateformes.
+*@param:
+*       <intput>: SDL_Texture *heroTexture: pointeur sur un type SDL_Texture vers la texture du personnage
+*       <output>: SDL_Texture *: pointeur sur un type SDL_Texture vers la texture du personnage
+*/
 SDL_Texture *loadGame(SDL_Texture *heroTexture)
 {
 //On charge les données pour la map
 
-initMaps();
-heroTexture=initHeroTexture(heroTexture);
-initSpriteTexture();
-return heroTexture;
-
+    initMaps();
+    heroTexture=initHeroTexture(heroTexture);
+    return heroTexture;
 }
 
+/**
+* @brief: Cette fonction decharge la memoire et remets les pointer a NULL
+*@param:
+*       <intput>: SDL_Texture *heroTexture: pointeur sur un type SDL_Texture vers la texture du personnage
+*       <intput>: Mix_Music *musique: pointeur sur un type Mix_Music vers la musique du jeu
+*/
 void cleanup(SDL_Texture *heroTexture, Mix_Music *musique)
 {
     //Nettoie les sprites de la map
     cleanMaps();
-    spriteTextureClean();
     heroTextureClean(heroTexture);
     //On quitte SDL_Mixer 2 et on décharge la mémoire
     Mix_FreeMusic(musique);

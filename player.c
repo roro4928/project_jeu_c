@@ -1,13 +1,12 @@
 #include "prototypes.h"
 
 
+/**
+* @brief: Cette fonction initialise et renvoie la texture de notre héro à afficher
+*@param:<input> SDL_Texture *heroTexture: Le pointeur vers la texture de notre héro
+*       <output> heroTexture: La texture de notre héro
+*/
 
-
-Sprites *getHero(void)
-{
-    Sprites *hero;
-    return hero;
-}
 
 SDL_Texture *initHeroTexture(SDL_Texture *heroTexture)
 {
@@ -16,47 +15,58 @@ SDL_Texture *initHeroTexture(SDL_Texture *heroTexture)
 
 }
 
+/**
+* @brief: Cette fonction est un guetteur qui récupère la coordonnée en abcisse du hero
+*@param: <input>:Sprites *hero: le pointeur vers notre structure Sprite qui fournit les attributs de notre héro
+*         <output> hero->x : renvoie l'abcisse du héro à un instant t
+*/
 
-SDL_Texture *getHeroTexture(void)
-{
-    SDL_Texture *heroTexture = NULL;
-    return heroTexture;
-}
 
 //Renvoie la coordonnée x du héro
 int getHerox(Sprites *hero)
 {
 return hero->x;
 }
+/**
+* @brief: Cette fonction est un guetteur qui récupère la coordonnée en ordonnée du hero
+*@param: <input>:Sprites *hero: le pointeur vers notre structure Sprite qui fournit les attributs de notre héro
+*         <output> hero->y : renvoie l'abcisse du héro à un instant t
+*/
+
 //Renvoie la coordonnée y du héro
 int getHeroy(Sprites *hero)
 {
 return hero->y;
 }
+/**
+* @brief: Cette fonction est un setteur qui change la coordonnée en abcisse du hero
+*@param: <input>:Sprites *hero: le pointeur vers notre structure Sprite qui fournit les attributs de notre héro
+*        <input>: int valeur : la valeur que l'on veut donner à l'abcisse
+*/
+
 //Change la coordonnéee x du héro
 void setHerox(int valeur, Sprites *hero)
 {
 hero->x = valeur;
 }
-
+/**
+* @brief: Cette fonction est un setteur qui change la coordonnée en ordonné du hero
+*@param: <input>:Sprites *hero: le pointeur vers notre structure Sprite qui fournit les attributs de notre héro
+*        <input>: int valeur : la valeur que l'on veut donner à l'ordonné
+*/
 //Change la coordonnéee y du héro
 void setHeroy(int valeur, Sprites *hero)
 {
 hero->y = valeur;
 }
 
-
+/**
+* @brief: Cette fonction est un setteur qui initalise les attributs de notre hero
+*@param: <input>Sprites *hero: le pointeur vers notre structure Sprite qui fournit les attributs de notre héro
+*       <output>Sprites *hero: le pointeur vers notre structure Sprite qui fournit les attributs de notre héro
+*/
 Sprites *initializeHero(Sprites *hero)
 {
-
-    //PV à 3
-    hero->life = 3;
-
-    //Timer d'invincibilité à 0
-    hero->invincibleTimer = 0;
-
-    //Indique l'état et la direction de notre héros
-    hero->etat = IDLE;
 
     hero->x = getBeginX();
     hero->y = getBeginY();
@@ -65,14 +75,17 @@ Sprites *initializeHero(Sprites *hero)
     hero->largeur = HERO_WIDTH;
     hero->hauteur = HERO_HEIGHT;
 
-    //Variables nécessaires au fonctionnement de la gestion des collisions
-    hero->timerMort = 0;
-    hero->onGround = 0;
-    hero->jump = hero->y - JUMPHEIGHT;
-
     return hero;
 }
 
+
+/**
+* @brief: Cette fonction modifie les coordonnées du joueur lors qu'il avance, recule, saute ou tombe.
+*@param: <intput>: Input *input: pointeur sur les commandes du jeu du type Input
+*        <input>Sprites *hero: le pointeur vers notre structure Sprite qui fournit les attributs de notre héro
+*        <intput>: Tiles **tiles: tableau de pointeur
+*        <output>Sprites *: le pointeur vers notre structure Sprite qui fournit les attributs de notre héro
+*/
 Sprites *updatePlayer(Input *input, Sprites *hero, Tiles **tiles)
 {
     static int nb = 0;
@@ -86,18 +99,13 @@ Sprites *updatePlayer(Input *input, Sprites *hero, Tiles **tiles)
         hero->x += HERO_SPEED;
     }
 
-    if(CollisionBas(hero, tiles))
-    {
-
-    }
-
     if (input->jump == 1 && (CollisionBas(hero, tiles) || nb!=0 ||(hero->y + hero->hauteur >= LIMITE_YMAX + hero->hauteur)))
     {
 
-        if (nb!=25)
+        if (nb!= JUMPHEIGHT)
         {
             nb ++;
-            hero->y -=4;
+            hero->y -=HERO_SPEED;
         }
 
         else
@@ -109,14 +117,18 @@ Sprites *updatePlayer(Input *input, Sprites *hero, Tiles **tiles)
     }
     if (!CollisionBas(hero, tiles) && (hero->y + hero->hauteur <= LIMITE_YMAX + hero->hauteur) && (nb == 0))
     {
-        hero->y += 5;
+        hero->y += GRAVITYSPEED;
     }
 
     return hero;
 }
 
 
-
+/**
+* @brief: Cette fonction libere la memoire de la texture du joueur.
+*@param: <intput>: Input *input: pointeur sur les commandes du jeu du type Input
+*        <output>: SDL_Texture *heroTexture: pointeur sur un type SDL_Texture vers la texture du personnage
+*/
 void heroTextureClean(SDL_Texture *heroTexture)
 {
     if (heroTexture!= NULL)
@@ -127,6 +139,12 @@ void heroTextureClean(SDL_Texture *heroTexture)
 
 }
 
+/**
+* @brief: Cette fonction renvoie s'il y a une colision entre la doite du joueur et une des plateforme.
+*@param: <input>Sprites *player: le pointeur vers notre structure Sprite qui fournit les attributs de notre héro
+*        <intput>: Tiles **tiles: tableau de pointeur
+*        <output>: int:0 pas de collision, 1 collision
+*/
 int CollisionDroite(Sprites *player, Tiles** tabBox)
 {
     for(int i=0;i< NBRE_TILES ;i++)
@@ -144,6 +162,12 @@ int CollisionDroite(Sprites *player, Tiles** tabBox)
     return 0;
 }
 
+/**
+* @brief: Cette fonction renvoie s'il y a une colision entre la gauche du joueur et une des plateforme.
+*@param: <input>Sprites *player: le pointeur vers notre structure Sprite qui fournit les attributs de notre héro
+*        <intput>: Tiles **tiles: tableau de pointeur
+*        <output>: int:0 pas de collision, 1 collision
+*/
 int CollisionGauche(Sprites *player, Tiles** tabBox)
 {
     for(int i=0;i< NBRE_TILES ;i++)
@@ -159,6 +183,12 @@ int CollisionGauche(Sprites *player, Tiles** tabBox)
     return 0;
 }
 
+/**
+* @brief: Cette fonction renvoie s'il y a une colision entre le bas du joueur et une des plateforme.
+*@param: <input>Sprites *player: le pointeur vers notre structure Sprite qui fournit les attributs de notre héro
+*        <intput>: Tiles **tiles: tableau de pointeur
+*        <output>: int:0 pas de collision, 1 collision
+*/
 int CollisionBas(Sprites *player, Tiles** tabBox)
 {
     for(int i=0;i< NBRE_TILES ;i++)
@@ -173,15 +203,4 @@ int CollisionBas(Sprites *player, Tiles** tabBox)
     }
     return 0;
 }
-/*
-int CollisionHaut(Sprites *player, Tiles** tabBox)
-{
-    for(int i=0;i< NBRE_TILES ;i++)
-    {
-        if(tabBox->y + tabBox->hauteur <= player->y)
-        {
-            return 0;
-        }
-    }
-    return 1;
-}*/
+

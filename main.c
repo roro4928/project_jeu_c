@@ -18,10 +18,11 @@ int main(int argc, char *argv[])
     // Chargement des ressources (graphismes, sons)
     heroTexture=loadGame(heroTexture);
 
-    // on initialise les plateforme sur la map
+    //On initialise les plateforme sur la map
     hero=initializeHero(hero);//on initialise le hero
     Tiles **tiles = initTiles();
 
+    //Gestion de la musique
     Mix_Music *musique;
     son(musique);
 
@@ -36,7 +37,7 @@ int main(int argc, char *argv[])
         //On dessine tout
 
         drawGame(heroTexture,hero);
-        gestionInputs(&input);
+        getInput(&input);
         hero=updatePlayer(&input, hero,tiles);
 
 

@@ -3,17 +3,17 @@
 
 #include "defs.h"
 
-// Structure pour gérer la map à afficher (à compléter plus tard)
+// Structure pour gérer la map à afficher
 typedef struct
 {
 
-SDL_Texture *background;
-SDL_Texture *tile;
-int beginx,beginy;//Coord du début pour le héro lorsque le niveau commence
-int startX,startY;// Coord du debut de la map
-int mapTimer;
+    SDL_Texture *background;
+    SDL_Texture *tile;
+    int beginx,beginy;//Coord du début pour le héro lorsque le niveau commence
+    int startX,startY;// Coord du debut de la map
 } Map;
 
+// Structure pour gérer les objets (plateformes)
 typedef struct
 {
     int hauteur;
@@ -23,20 +23,13 @@ typedef struct
 
 }Tiles;
 
+// Structure pour gérer le personnage
 typedef struct
 {
-    int life,invincibleTimer;//point de vie et temps d'invicibilité
     int x;//coord du sprite
     int y;//coord du sprite
     int hauteur;//hauteur du sprite
     int largeur;//largeur du sprite
-    int type; //Type de sprite , monstre hero, power up?
-    int respawnX,respawnY;
-    int etat;
-    int onGround,timerMort;// sur le sol? et chorno une fois mort
-    float dirX,dirY;//vecteur de déplacement avant détéction des collisions avec la map
-    int saveX,saveY;//coord de départ
-    int jump; // var pour le saut
 }Sprites;
 
 
@@ -47,11 +40,5 @@ typedef struct Input
 	int escape, right, left, jump;
 
 } Input;
-
-
-
-
-
-
 
 #endif // STRUCT_H_INCLUDED

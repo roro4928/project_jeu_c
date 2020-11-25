@@ -1,13 +1,10 @@
 #include "prototypes.h"
 
-
-void gestionInputs(Input *input)
-{
-	//On gère le clavier
-	getInput(input);
-}
-
-
+/**
+* @brief: Cette fonction gere les inputs du clavier
+*@param:
+*       <intput>: Input *input: pointeur sur les commandes du jeu du type Input
+*/
 void getInput(Input *input)
 {
 	SDL_Event event;

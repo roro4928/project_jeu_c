@@ -18,9 +18,6 @@ extern void drawMap(int);
 extern SDL_Texture *getBackground(void);
 extern SDL_Texture *getHeroTexture(void);
 extern SDL_Texture *getTiles(void);
-extern SDL_Texture *getSpriteTexture(void);
-extern void initSpriteTexture(void);
-extern void spriteTextureClean(void);
 extern SDL_Texture *initHeroTexture(SDL_Texture*);
 extern void heroTextureClean(SDL_Texture*);
 extern SDL_Renderer *getrenderer(void);
@@ -37,8 +34,6 @@ extern int getHerox(Sprites*);
 extern int getHeroy(Sprites*);
 extern Sprites *initializeHero(Sprites*);
 extern void drawHero(SDL_Texture*, Sprites*);
-extern int initSpritex(void);
-extern int initSpritey(void);
 extern int getBeginX(void);
 extern int getBeginY(void);
 extern int getStartX(void);
@@ -54,10 +49,7 @@ extern Sprites *updatePlayer(Input *, Sprites*, Tiles**);
 extern int CollisionDroite(Sprites *, Tiles **);
 extern int CollisionBas(Sprites *, Tiles**);
 extern int CollisionGauche(Sprites *, Tiles ** );
-extern void son(Mix_Music*);
-
-
-
+extern void son(Mix_Music *musique;);
 
 #endif
 #endif // PROTOTYPES_H_INCLUDED
